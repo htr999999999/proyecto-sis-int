@@ -6,6 +6,7 @@ import time
 from apikey import APIkeyas
 #Definir API KEY
 API_KEY = APIkeyas
+import json
 
 #Definir cliente
 
@@ -43,13 +44,21 @@ ubicacionUsar = list(ubicaciones.values())
 #         ubicacion = 
 # Definir busqueda
 
-places_result = gmaps.places_nearby(location =ubicacionUsar[ubicacion] ,radius='4000', open_now = False, type='night_club')
+places_result = gmaps.places_nearby(location =ubicacionUsar[ubicacion] ,radius='5000', open_now = False, type='bank')  # type: ignore
 
 # # pprint.pprint(places_result)0
 
+# with open('data.json', 'w', encoding='utf8') as f:
+#     for place in places_result['results']:
+#         my_place_id = place['place_id']
+#         my_fields = ['name','rating','vicinity', 'type']
+#         place_details = gmaps.place(place_id = my_place_id, fields = my_fields)  # type: ignore
+#         json.dump(place_details, f, indent=4, ensure_ascii=False)
 
-for place in places_result['results']:
-    my_place_id = place['place_id']
-    my_fields = ['name','rating','vicinity']
-    place_details = gmaps.place(place_id = my_place_id, fields = my_fields)
-    print(place_details)
+with open('data.json', 'w', encoding='utf8') as f:
+    # for place in places_result['results']:
+    #     my_place_id = place['place_id']
+    #     my_fields = ['name','rating','vicinity', 'type']
+    #     place_details = gmaps.place(place_id = my_place_id, fields = my_fields)
+    
+    json.dump(places_result, f, indent=4, ensure_ascii=False)

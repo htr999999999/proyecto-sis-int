@@ -1,3 +1,8 @@
 apikey.py
 __pycache__/
 venv/
+.vscode/
+data.json
+date.json
+example.json
+test.py
